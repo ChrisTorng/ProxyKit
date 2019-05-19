@@ -45,16 +45,6 @@ namespace ProxyKit
                 context.Request.QueryString));
 
             return uri;
-
-            var request = context.Request.CreateProxyHttpRequest();
-            request.Headers.Host = uri.Authority;
-            request.RequestUri = uri;
-
-            var proxyKitClient = context
-                .RequestServices
-                .GetRequiredService<ProxyKitClient>();
-
-            return new ForwardContext(context, request, proxyKitClient.Client);
         }
 
         [Obsolete("Use AddXForwardedHeaders() instead.", true)]
